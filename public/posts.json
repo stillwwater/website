@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Compile Time typeid In C++ Without RTTI",
+        "file": "compile-time-typeid.md",
+        "link": "compile-time-typeid",
+        "date": "July 7, 2020",
+        "readtime": 4
+    }
+]
