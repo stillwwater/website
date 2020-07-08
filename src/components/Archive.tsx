@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
+
 import './Archive.css';
 
 const PostsIndex = "posts.json";
@@ -66,7 +67,20 @@ export function Post(props: any) {
       return '';
     },
     html: true,
+    linkify: true,
   });
+
+  md.use(require('markdown-it-anchor').default, {
+    permalink: true,
+    // Don't show permalink for the post title header
+    level: 2,
+    permalinkBefore: false,
+    // Link format: /a/article-name/section-name
+    slugify: (str: string) =>
+      `a/${props.match.params.post}/` +
+        str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, ''),
+  });
+
   const [contents, setContents] = useState('');
 
   useEffect(() => {

@@ -41,3 +41,19 @@
 .hljs-comment {
   color: var(--syntax-comment);
 }
+
+.post .header-anchor {
+  display: none;
+}
+
+.post h2:hover .header-anchor {
+  display: inline;
+}
+
+.post h3:hover .header-anchor {
+  display: inline;
+}
+
+.post h4:hover .header-anchor {
+  display: inline;
+}

@@ -13,7 +13,7 @@
   --syntax-keyword: #bae;
   --syntax-comment: #65737e;
   --syntax-literal: #b294bb;
-  --syntax-bg: #0a121d;
+  --syntax-bg: #101a29;
   --syntax-fg: #d4d6db;
 
   --font-sans: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Ubuntu', 'Helvetica Neue', sans-serif;
@@ -54,7 +54,7 @@ pre {
   overflow-x: auto;
 }
 
-pre>code {
+pre code {
   background: none;
   padding: none;
   border-radius: 0;
@@ -64,13 +64,14 @@ blockquote {
   margin: 0;
   padding: 12px;
   padding-left: 48px;
+  border-radius: 2px;
   background: var(--color-light);
   border-left: 6px solid var(--color-gray);
 }
 
 blockquote>p {
   color: var(--color-fg);
-  opacity: .9;
+  opacity: .95;
 }
 
 hr {

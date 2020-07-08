@@ -1,6 +1,6 @@
 # Compile Time typeid In C++ Without RTTI
 
->  This article begins with some motivation behind the implementation, you can skip this and jump straight to the [C++11 implementation]() or the [C++17 version]() if you prefer. All assembly output was generated with clang 10.0.0 using -O2 on Linux.
+>  This article begins with some motivation behind the implementation, you can skip this and jump straight to the [C++11 implementation](#a/compile-time-typeid/a-non-rtti-alternative-to-typeid) or the [C++17 version](#a/compile-time-typeid/c17-alternative) if you prefer. All assembly output was generated with clang 10.0.0 using -O2 on Linux.
 
 When implementing an [Entity Component System](https://en.wikipedia.org/wiki/Entity_component_system) or ECS an operation that comes up frequently is doing some hash table lookup based on a type. A common way to implement an ECS is to store all instances of some component type (some struct) in a contiguous array, each of these arrays is then stored in a hash table using the type of the component as a key.
 
