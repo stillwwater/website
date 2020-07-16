@@ -11,8 +11,8 @@ type PostMetadata = {
   name: string,
   file: string,
   link: string,
-  date: string,
-  readtime: number,
+  date?: string,
+  readtime?: number,
 };
 
 function makePostUrl(post: PostMetadata): string {
@@ -26,11 +26,13 @@ function PostLink(props: {post: PostMetadata}) {
         <h3>{props.post.name}</h3>
       </span>
       <span className="archive-post-date">
-        {props.post.date}
-        {props.post.readtime && ` \u2022 ${props.post.readtime} min read`}
+        {props.post.date && props.post.date}
+        {props.post.readtime
+          && `${props.post.date ? ' \u2022 ' : ''}
+            ${props.post.readtime} min read`}
       </span>
     </Link>
-  )
+  );
 }
 
 export function Archive() {
@@ -62,7 +64,7 @@ export function Post(props: any) {
       if (lang && hljs.getLanguage(lang)) {
         try {
           return hljs.highlight(lang, str).value;
-        } catch (__) { console.log('err'); }
+        } catch (__) {/* Don't highlight */}
       }
       return '';
     },
@@ -98,6 +100,7 @@ export function Post(props: any) {
           setContents('# 404\nThe post you are looking for no longer exists.');
           return;
         }
+        document.title = `${match[0].name} \u2014 quadwords`;
         // Get the markdown contents
         fetch(`posts/${file}`)
           .then(res => res.text())
@@ -105,11 +108,15 @@ export function Post(props: any) {
           .catch(err => console.error(err));
       })
       .catch(err => console.error(err));
+      return () => {
+        // Cleanup
+        document.title = 'quadwords \u2014 by stillwwater';
+      };
   }, [setContents, props.match.params.post]);
 
   return (
     <div className="post">
       <div dangerouslySetInnerHTML={{__html: md.render(contents)}} />
     </div>
-  )
+  );
 }

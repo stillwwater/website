@@ -5,6 +5,15 @@ import {Archive, Post} from './Archive'
 
 import './App.css'
 
+function NotFound() {
+  return (
+    <div className="post">
+      <h1>404</h1>
+      <p>The page you are looking for does not exist.</p>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <div className="app">
@@ -13,7 +22,8 @@ export default function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Archive} />
-            <Route path="/a/:post" component={Post}/>
+            <Route path="/a/:post" component={Post} />
+            <Route component={NotFound} />
           </Switch>
         </HashRouter>
       </div>

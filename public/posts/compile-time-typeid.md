@@ -71,7 +71,7 @@ constexpr auto foo_type = type_id<Foo>();
 This method works surprisingly well with very little code, and unsurprisingly we have reduced the generated assembly for `type_id<Foo>()` to a single load instruction.
 
 ```asm
-movl $type_id_ptr<Foo>::id, %eax
+movl $TypeIdInfo<Foo>::value, %eax
 ```
 
 We still have some work to do though as right now `type_id<Foo>()` returns a different value than `type_id<Foo &>()` or `type_id<const Foo *>()` which may not be the behavior we want. This is easily solved using type traits, though the implementation is not exactly easy on the eyes.

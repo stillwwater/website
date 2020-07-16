@@ -34,7 +34,7 @@
   color: var(--syntax-keyword);
 }
 
-.hljs-literal {
+.hljs-literal, .hljs-number, .hljs-string {
   color: var(--syntax-literal);
 }
 

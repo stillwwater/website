@@ -18,7 +18,7 @@ export function Header() {
   return (
     <div className="header">
       <div className="header-title">
-        <Link to="/"><h1>quadword</h1></Link>
+        <Link to="/"><h1>quadwords</h1></Link>
       </div>
       <Navigation />
     </div>
